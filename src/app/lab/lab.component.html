@@ -1,0 +1,51 @@
+<table datatable [dtOptions]="dtOptions" class="row-border hover">
+  <thead>
+  <tr>
+    <td></td>
+    <th *ngFor="let desc of rowsColsDescriptions" bgcolor="#d3d3d3" scope="col">{{desc}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let row of matrix; let i = index">
+    <th bgcolor="#d3d3d3" scope="row">{{rowsColsDescriptions[i]}}</th>
+    <th *ngFor="let col of row">{{col}}</th>
+  </tr>
+  </tbody>
+  <hr>
+  <tbody>
+  <tr *ngIf="colsSums.length">
+    <th bgcolor="#d3d3d3" scope="row">1</th>
+    <th *ngFor="let col of colsSums">{{col}}</th>
+  </tr>
+  <tr *ngIf="converseColsSums.length">
+    <th bgcolor="#d3d3d3" scope="row">2</th>
+    <th *ngFor="let col of converseColsSums">{{col}}</th>
+  </tr>
+  <tr *ngIf="normalizedBelongFunction.length">
+    <th bgcolor="#d3d3d3" scope="row">M(X)</th>
+    <th *ngFor="let col of normalizedBelongFunction">{{col}}</th>
+  </tr>
+  </tbody>
+</table>
+
+
+<h2 class="mt-5 mb-3 pl-3">Enter data for last row</h2>
+<table datatable [dtOptions]="dtOptions" class="row-border hover container">
+  <thead>
+  <tr>
+    <th *ngFor="let desc of rowsColsDescriptions" bgcolor="#d3d3d3" scope="col">{{desc}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td *ngFor="let value of matrix[matrix.length-1]; let i = index; trackBy: trackByIdx;">
+      <input [(ngModel)]="matrix[matrix.length-1][i]" type="number" style="max-width: 40px;" [min]="0" [max]="9"
+             [attr.disabled]="i == matrix.length-1 ? '' : null">
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<button (click)="calculateMatrix()" class="btn btn-lg btn-primary ml-3 mt-4">Calculate</button>
+
+<button (click)="fillMatrixLastRow()" class="btn btn-lg btn-warning mt-3 mt-4 ml-5">FILL</button>
