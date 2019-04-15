@@ -8,15 +8,20 @@ import {routing} from './app.routing';
 import {LabComponent} from './lab/lab.component';
 import {DataTablesModule} from 'angular-datatables';
 import {FormsModule} from '@angular/forms';
+import { ResultsComponent } from './results/results.component';
+import {ChartsModule} from "ng2-charts";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     InfoComponent,
-    LabComponent
+    LabComponent,
+    ResultsComponent,
+
   ],
   imports: [
+    ChartsModule,
     BrowserModule,
     FormsModule,
     DataTablesModule,

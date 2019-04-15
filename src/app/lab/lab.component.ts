@@ -24,6 +24,8 @@ export class LabComponent implements OnInit {
   normalizedBelongFunction: number[] = [];
 
   public calculateMatrix() {
+    this.normalizedBelongFunction = [];
+
     console.log('calculate matrix');
 
     const k = this.matrix.length - 1; // k - last matrix row
@@ -81,6 +83,10 @@ export class LabComponent implements OnInit {
 
   fillMatrixLastRow() {
     this.matrix[10] = [9, 9, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+  }
+
+  clear() {
+    this.normalizedBelongFunction = [];
   }
 
   trackByIdx(index: number, obj: any) {
